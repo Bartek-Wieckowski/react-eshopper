@@ -22,7 +22,7 @@ export default function MainSlider() {
     function () {
       let slider = setInterval(() => {
         setIndex(index + 1);
-      }, 4500);
+      }, 6500);
       return () => {
         clearInterval(slider);
       };
