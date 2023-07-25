@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import "./navbar.css";
 import CartButtons from "../CartButtons/CartButtons";
+import { links } from "../../utils/constants";
 
 export default function Navbar() {
   return (
@@ -17,15 +18,11 @@ export default function Navbar() {
           </button>
         </div>
         <ul className="nav-links">
-          <li>
-            <Link>Test</Link>
-          </li>
-          <li>
-            <Link>Test 2</Link>
-          </li>
-          <li>
-            <Link>Test 3</Link>
-          </li>
+          {links.map((link) => (
+            <li key={link.id}>
+              <Link to={link.url}>{link.text}</Link>
+            </li>
+          ))}
         </ul>
         <CartButtons />
       </div>
