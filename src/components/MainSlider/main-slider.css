@@ -1,0 +1,45 @@
+/* Style dla komponentu slidera */
+.slider {
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    margin-top: 2rem;
+}
+
+.slides {
+    /* Ukrycie pozostałych slajdów poza widokiem */
+    overflow: hidden;
+    position: relative;
+    height: 400px;
+}
+
+.slide {
+    min-width: 100%;
+    height: inherit;
+    position: absolute;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.slide img {
+    display: block;
+    height: 400px;
+    object-fit: contain;
+    border-radius: 6px;
+    margin: auto;
+}
+
+.activeSlide {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.nextSlide {
+    transform: translateX(100%);
+}
+
+.lastSlide {
+    transform: translateX(-100%);
+}
