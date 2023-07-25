@@ -1,12 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Codystar&display=swap");
 
 .nav {
-    height: 5rem;
+    height: var(--nav-height);
     display: flex;
     align-items: center;
     justify-content: center;
     position: fixed;
     width: 100%;
+    background: var(--clr-primary);
+    transition: all .3s ease;
 }
 
 .nav-center {
@@ -25,6 +27,10 @@
     color: var(--clr-cta);
 }
 
+:is(.nav h1) {
+    margin-bottom: 0;
+}
+
 .shop-name {
     font-family: "Codystar";
 }
@@ -38,6 +44,10 @@
     border: transparent;
     color: var(--clr-white);
     cursor: pointer;
+}
+
+.scrolled {
+    border-bottom: 1px solid var(--clr-additional);
 }
 
 

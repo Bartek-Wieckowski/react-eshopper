@@ -1,11 +1,29 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./navbar.css";
-import CartButtons from "../CartButtons/CartButtons";
 import { links } from "../../utils/constants";
+import CartButtons from "../CartButtons/CartButtons";
 
 export default function Navbar() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  function handleScroll() {
+    if (window.scrollY > 0) {
+      setIsScrolled(true);
+    } else {
+      setIsScrolled(false);
+    }
+  }
+
+  useEffect(function () {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <nav className="nav">
+    <nav className={`nav ${isScrolled ? "scrolled" : ""}`}>
       <div className="nav-center">
         <div className="nav-header">
           <Link to="/">
