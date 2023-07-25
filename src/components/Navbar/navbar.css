@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Codystar&display=swap");
-
 .nav {
     height: var(--nav-height);
     display: flex;
@@ -8,7 +6,7 @@
     position: fixed;
     width: 100%;
     background: var(--clr-primary);
-    transition: all .3s ease;
+    transition: var(--transition);
 }
 
 .nav-center {
