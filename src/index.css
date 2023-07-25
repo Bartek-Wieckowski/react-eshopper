@@ -161,3 +161,43 @@ p {
 main {
   padding-top: var(--nav-height);
 }
+
+
+/* ABOUTE PAGE */
+.page {
+  display: grid;
+}
+
+.page img {
+  width: 100%;
+  display: block;
+  border-radius: var(--radius);
+  height: 400px;
+  object-fit: contain;
+}
+
+.page p {
+  line-height: 2;
+  max-width: 45em;
+  margin: 0 auto;
+  margin-top: 2rem;
+  color: var(--clr-white);
+}
+
+.page .title {
+  text-align: center;
+}
+
+.page .underline {
+  margin-left: 0;
+}
+
+@media (min-width: 992px) {
+  .page {
+    grid-template-columns: 1fr 1fr;
+    align-items: end;
+  }
+  .page .title {
+    text-align: left;
+  }
+}
