@@ -1,0 +1,22 @@
+.breadcrumb-wrapper {
+    background: var(--clr-additional);
+    width: 100%;
+    min-height: 10vh;
+    display: flex;
+    align-items: center;
+    color: var(--clr-white);
+}
+
+.breadcrumb-wrapper h3 {
+    margin-bottom: 0;
+}
+
+.breadcrumb-wrapper a {
+    color: var(--clr-primary);
+    padding: 0.5rem;
+    transition: var(--transition);
+}
+
+.breadcrumb-wrapper a:hover {
+    color: var(--clr-cta);
+}
