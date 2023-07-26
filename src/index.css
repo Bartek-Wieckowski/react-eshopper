@@ -216,3 +216,26 @@ main {
     grid-template-columns: 200px 1fr;
   }
 }
+
+/* PAGE NOT FOUND */
+.page-100 {
+  min-height: calc(100vh - 10rem);
+  padding: 5rem 0;
+}
+
+.page-not-found {
+  background: var(--clr-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.page-not-found h1 {
+  font-size: 10rem;
+}
+
+.page-not-found h3 {
+  text-transform: none;
+  margin-bottom: 2rem;
+}

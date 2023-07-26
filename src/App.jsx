@@ -5,6 +5,7 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import Homepage from "./pages/Homepage";
 import About from "./pages/About";
 import Products from "./pages/Products";
+import PageNotFound from "./pages/PageNotFound";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/" element={<Homepage />}></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/products" element={<Products />}></Route>
+        <Route path="*" element={<PageNotFound />}></Route>
       </Routes>
     </BrowserRouter>
   );
