@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer, useEffect } from "react";
 
 const initialState = {
   productsLoading: false,
@@ -14,6 +14,7 @@ function reducer(state, action) {
     case "getProductsBegin":
       return { ...state, productsLoading: true };
     case "getProductsSuccess":
+      const featuredProducts = action.payload.filter((product) => product.featured === true);
       return { ...state, productsLoading: false, products: action.payload, featuredProducts };
     case "getProductsError":
       return { ...state, productsLoading: false, productsError: true };
@@ -36,6 +37,7 @@ function ProductsProvider({ children }) {
         const res = await fetch(`https://course-api.com/react-store-products`);
         const data = await res.json();
         dispatch({ type: "getProductsSuccess", payload: data });
+        console.log(data);
       } catch (error) {
         dispatch({ type: "getProductsError" });
       }
