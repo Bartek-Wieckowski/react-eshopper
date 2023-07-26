@@ -3,6 +3,7 @@ import { useProducts } from "../../contexts/ProductsContext";
 import "./featured-products.css";
 import Product from "../Product/Product";
 import { Link } from "react-router-dom";
+import Loading from "../Loading/Loading";
 
 export default function FeaturedProducts() {
   const { productsLoading, productsError, featuredProducts } = useProducts();
@@ -22,6 +23,7 @@ export default function FeaturedProducts() {
     }
     return array;
   }
+  if (productsLoading) return <Loading />;
   return (
     <section className="section featured-products-wrapper">
       <div className="title">
