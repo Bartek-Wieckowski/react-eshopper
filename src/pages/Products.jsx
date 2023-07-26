@@ -3,15 +3,15 @@ import ProductsList from "../components/ProductList/ProductsList";
 
 export default function Products() {
   return (
-    <div>
+    <main>
       <Breadcrumbs title="Products" />
-      <div className="products">
+      <section className="products section-center">
         <span>Filter Component</span>
         <div>
-            <span>Sort component</span>
+          <span>Sort component</span>
           <ProductsList />
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }

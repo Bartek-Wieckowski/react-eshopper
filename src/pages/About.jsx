@@ -2,7 +2,7 @@ import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 
 export default function About() {
   return (
-    <div>
+    <main>
       <Breadcrumbs title="About" />
       <section className="page section section-center">
         <img src="/assets/imgs/procat3.png" alt="picture" />
@@ -22,6 +22,6 @@ export default function About() {
           </p>
         </article>
       </section>
-    </div>
+    </main>
   );
 }
