@@ -7,6 +7,7 @@
   --clr-black: #000;
   --clr-cta: hsl(18, 83%, 63%);
   --clr-additional: hsl(218, 19%, 38%);
+  --clr-additional-2: hsl(22, 31%, 52%);
   --transition: all 0.3s linear;
   --spacing: 0.1rem;
   --radius: 0.25rem;
