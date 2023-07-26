@@ -1,6 +1,11 @@
+import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
+import ProductsList from "../components/ProductList/ProductsList";
 
 export default function Products() {
   return (
-    <main>Products Page</main>
-  )
+    <div>
+      <Breadcrumbs title="Products" />
+      <ProductsList />
+    </div>
+  );
 }
