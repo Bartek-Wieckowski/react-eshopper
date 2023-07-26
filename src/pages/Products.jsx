@@ -5,7 +5,13 @@ export default function Products() {
   return (
     <div>
       <Breadcrumbs title="Products" />
-      <ProductsList />
+      <div className="products">
+        <span>Filter Component</span>
+        <div>
+            <span>Sort component</span>
+          <ProductsList />
+        </div>
+      </div>
     </div>
   );
 }

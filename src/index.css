@@ -197,7 +197,21 @@ main {
     grid-template-columns: 1fr 1fr;
     align-items: end;
   }
+
   .page .title {
     text-align: left;
+  }
+}
+
+/* PRODUCTS PAGE */
+.products {
+  display: grid;
+  gap: 3rem 1.5rem;
+  margin: 4rem auto;
+}
+
+@media (min-width: 768px) {
+  .products {
+    grid-template-columns: 200px 1fr;
   }
 }
