@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./product.css";
+import { formatPrice } from "../../utils/helpers";
 
 export default function Product({ product }) {
   const { image, name, price, id } = product;
@@ -15,8 +16,7 @@ export default function Product({ product }) {
       </div>
       <footer>
         <h5>{name}</h5>
-        <p>{price}</p>
-        {/* <p>{formatPrice(price)}</p> */}
+        <p>{formatPrice(price)}</p>
       </footer>
     </article>
   );
