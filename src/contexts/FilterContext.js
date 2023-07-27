@@ -53,7 +53,9 @@ function FilterProvider({ children }) {
   }
 
   return (
-    <FilterContext.Provider value={{ gridView, allProducts, filteredProducts, setGridView, setListView }}>
+    <FilterContext.Provider
+      value={{ gridView, allProducts, filteredProducts, products, setGridView, setListView }}
+    >
       {children}
     </FilterContext.Provider>
   );
