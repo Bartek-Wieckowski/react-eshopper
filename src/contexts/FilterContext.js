@@ -49,7 +49,7 @@ function FilterProvider({ children }) {
     dispatch({ type: "setGridView" });
   }
   function setListView() {
-    dispatch({ type: "setGridView" });
+    dispatch({ type: "setListView" });
   }
 
   return (
