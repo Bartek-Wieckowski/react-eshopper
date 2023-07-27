@@ -53,10 +53,6 @@
         align-items: center;
         justify-content: center;
         cursor: pointer;
-
-        svg {
-            font-size: 1rem;
-        }
     }
 
     .sort-wrapper .btn-container .active {
@@ -72,7 +68,8 @@
         text-transform: capitalize;
         padding: 0.25rem 0.5rem;
     }
-    .sort-wrapper .sort-input option{
+
+    .sort-wrapper .sort-input option {
         color: var(--clr-black)
     }
 
