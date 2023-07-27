@@ -28,6 +28,24 @@ function reducer(state, action) {
       return { ...state, gridView: true };
     case "setListView":
       return { ...state, gridView: false };
+    case "updateSort":
+      return { ...state, sort: action.payload };
+    case "sortProducts":
+      const { sort, filteredProducts } = state;
+      let tempProducts = [...filteredProducts];
+      if (sort === "price-lowest") {
+        tempProducts.sort((a, b) => a.price - b.price);
+      }
+      if (sort === "price-highest") {
+        tempProducts.sort((a, b) => b.price - a.price);
+      }
+      if (sort === "name-a") {
+        tempProducts.sort((a, b) => a.name.localeCompare(b.name));
+      }
+      if (sort === "name-z") {
+        tempProducts.sort((a, b) => b.name.localeCompare(a.name));
+      }
+      return { ...state, filteredProducts: tempProducts };
 
     default:
       throw new Error("Unknown action type");
@@ -36,7 +54,7 @@ function reducer(state, action) {
 
 function FilterProvider({ children }) {
   const { products } = useProducts();
-  const [{ gridView, allProducts, filteredProducts }, dispatch] = useReducer(reducer, initialState);
+  const [{ gridView, allProducts, filteredProducts, sort }, dispatch] = useReducer(reducer, initialState);
 
   useEffect(
     function () {
@@ -45,16 +63,38 @@ function FilterProvider({ children }) {
     [products]
   );
 
+  useEffect(
+    function () {
+      dispatch({ type: "sortProducts" });
+    },
+    [sort]
+  );
+
   function setGridView() {
     dispatch({ type: "setGridView" });
   }
+
   function setListView() {
     dispatch({ type: "setListView" });
   }
 
+  function updateSort(e) {
+    const value = e.target.value;
+    dispatch({ type: "updateSort", payload: value });
+  }
+
   return (
     <FilterContext.Provider
-      value={{ gridView, allProducts, filteredProducts, products, setGridView, setListView }}
+      value={{
+        gridView,
+        allProducts,
+        filteredProducts,
+        products,
+        setGridView,
+        setListView,
+        updateSort,
+        sort,
+      }}
     >
       {children}
     </FilterContext.Provider>
