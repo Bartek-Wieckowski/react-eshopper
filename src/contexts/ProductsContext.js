@@ -37,7 +37,7 @@ function ProductsProvider({ children }) {
         const res = await fetch(`https://course-api.com/react-store-products`);
         const data = await res.json();
         dispatch({ type: "getProductsSuccess", payload: data });
-        console.log(data);
+        // console.log(data);
       } catch (error) {
         dispatch({ type: "getProductsError" });
       }
