@@ -1,5 +1,6 @@
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 import ProductsList from "../components/ProductList/ProductsList";
+import Sort from "../components/Sort/Sort";
 
 export default function Products() {
   return (
@@ -8,7 +9,7 @@ export default function Products() {
       <section className="products section-center">
         <span>Filter Component</span>
         <div>
-          <span>Sort component</span>
+          <Sort/>
           <ProductsList />
         </div>
       </section>

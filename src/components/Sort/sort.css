@@ -1,0 +1,83 @@
+.sort-wrapper {
+    display: grid;
+    grid-template-columns: auto auto 1fr auto;
+    align-items: center;
+    margin-bottom: 2rem;
+    column-gap: 2rem;
+}
+
+.sort-wrapper button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+
+@media (max-width: 576px) {
+    .sort-wrapper {
+        display: grid;
+        grid-template-columns: 1fr;
+        row-gap: 0.75rem;
+    }
+
+    .sort-wrapper label {
+        display: inline-block;
+        margin-right: 0.5rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .sort-wrapper {
+        column-gap: 2rem;
+    }
+
+    .sort-wrapper p {
+        text-transform: capitalize;
+        margin-bottom: 0;
+    }
+
+    .sort-wrapper .btn-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 0.5rem;
+    }
+
+    .sort-wrapper .btn-container button {
+        background: transparent;
+        border: none;
+        color: var(--clr-black);
+        width: 1.5rem;
+        border-radius: var(--radius);
+        height: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        svg {
+            font-size: 1rem;
+        }
+    }
+
+    .sort-wrapper .btn-container .active {
+        background: var(--clr-black);
+        color: var(--clr-white);
+    }
+
+    .sort-wrapper .sort-input {
+        border-color: transparent;
+        background-color: transparent;
+        color: var(--clr-white);
+        font-size: 1rem;
+        text-transform: capitalize;
+        padding: 0.25rem 0.5rem;
+    }
+    .sort-wrapper .sort-input option{
+        color: var(--clr-black)
+    }
+
+    .sort-wrapper label {
+        font-size: 1rem;
+        text-transform: capitalize;
+    }
+}
