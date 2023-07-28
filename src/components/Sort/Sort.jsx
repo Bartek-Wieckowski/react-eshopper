@@ -2,7 +2,7 @@ import { useFilter } from "../../contexts/FilterContext";
 import "./sort.css";
 
 export default function Sort() {
-  const { products, gridView, setGridView, setListView, sort, updateSort } = useFilter();
+  const { filteredProducts: products, gridView, setGridView, setListView, sort, updateSort } = useFilter();
   return (
     <div className="sort-wrapper">
       <div className="btn-container">
