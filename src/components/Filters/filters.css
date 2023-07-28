@@ -33,7 +33,10 @@
 
 .filters-wrapper .active {
     border-color: #eee;
-    opacity: 1;
+    
+}
+.filters-wrapper .active-clr {
+    opacity: 1 !important;
 }
 
 .filters-wrapper .company {
