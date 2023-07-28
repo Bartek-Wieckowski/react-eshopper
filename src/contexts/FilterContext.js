@@ -23,13 +23,24 @@ const initialState = {
 function reducer(state, action) {
   switch (action.type) {
     case "loadProducts":
-      return { ...state, allProducts: [...action.payload], filteredProducts: [...action.payload] };
+      let maxPrice = action.payload.map((p) => p.price);
+      maxPrice = Math.max(...maxPrice);
+      return {
+        ...state,
+        allProducts: [...action.payload],
+        filteredProducts: [...action.payload],
+        filters: { ...state.filters, maxPrice: maxPrice, price: maxPrice },
+      };
+
     case "setGridView":
       return { ...state, gridView: true };
+
     case "setListView":
       return { ...state, gridView: false };
+
     case "updateSort":
       return { ...state, sort: action.payload };
+
     case "sortProducts":
       const { sort, filteredProducts } = state;
       let tempProducts = [...filteredProducts];
@@ -47,6 +58,50 @@ function reducer(state, action) {
       }
       return { ...state, filteredProducts: tempProducts };
 
+    case "updateFilters":
+      const { name, value } = action.payload;
+      return { ...state, filters: { ...state.filters, [name]: value } };
+
+    case "filterProducts":
+      const { allProducts } = state;
+      const { text, category, company, color, price, shipping } = state.filters;
+      let tempProductsFilter = [...allProducts];
+      if (text) {
+        tempProductsFilter = tempProductsFilter.filter((product) =>
+          product.name.toLowerCase().startsWith(text)
+        );
+      }
+      if (category !== "all") {
+        tempProductsFilter = tempProductsFilter.filter((product) => product.category === category);
+      }
+      if (company !== "all") {
+        tempProductsFilter = tempProductsFilter.filter((product) => product.company === company);
+      }
+      if (color !== "all") {
+        tempProductsFilter = tempProductsFilter.filter((product) => {
+          return product.colors.find((c) => c === color);
+        });
+      }
+      tempProductsFilter = tempProductsFilter.filter((product) => product.price <= price);
+      if (shipping) {
+        tempProductsFilter = tempProductsFilter.filter((product) => product.shipping === true);
+      }
+      return { ...state, filteredProducts: tempProductsFilter };
+
+    case "clearFilters":
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          text: "",
+          company: "all",
+          category: "all",
+          color: "all",
+          price: state.filters.maxPrice,
+          shipping: false,
+        },
+      };
+
     default:
       throw new Error("Unknown action type");
   }
@@ -54,7 +109,10 @@ function reducer(state, action) {
 
 function FilterProvider({ children }) {
   const { products } = useProducts();
-  const [{ gridView, allProducts, filteredProducts, sort }, dispatch] = useReducer(reducer, initialState);
+  const [{ gridView, allProducts, filteredProducts, sort, filters }, dispatch] = useReducer(
+    reducer,
+    initialState
+  );
 
   useEffect(
     function () {
@@ -65,9 +123,10 @@ function FilterProvider({ children }) {
 
   useEffect(
     function () {
+      dispatch({ type: "filterProducts" });
       dispatch({ type: "sortProducts" });
     },
-    [sort]
+    [sort, filters]
   );
 
   function setGridView() {
@@ -83,6 +142,28 @@ function FilterProvider({ children }) {
     dispatch({ type: "updateSort", payload: value });
   }
 
+  function updateFilters(e) {
+    let name = e.target.name;
+    let value = e.target.value;
+    if (name === "category") {
+      value = e.target.textContent;
+    }
+    if (name === "color") {
+      value = e.target.dataset.color;
+    }
+    if (name === "price") {
+      value = Number(value);
+    }
+    if (name === "shipping") {
+      value = e.target.checked;
+    }
+    dispatch({ type: "updateFilters", payload: { name, value } });
+  }
+
+  function clearFilters() {
+    dispatch({ type: "clearFilters" });
+  }
+
   return (
     <FilterContext.Provider
       value={{
@@ -94,6 +175,9 @@ function FilterProvider({ children }) {
         setListView,
         updateSort,
         sort,
+        filters,
+        updateFilters,
+        clearFilters,
       }}
     >
       {children}
