@@ -36,7 +36,7 @@ export default function Filters() {
             <input type="checkbox" name="shipping" />
           </div>
         </form>
-        <button type="button">Clear filters</button>
+        <button type="button" className="clear-btn">Clear filters</button>
       </div>
     </div>
   );
