@@ -1,4 +1,5 @@
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
+import Filters from "../components/Filters/Filters";
 import ProductsList from "../components/ProductList/ProductsList";
 import Sort from "../components/Sort/Sort";
 
@@ -7,9 +8,9 @@ export default function Products() {
     <main>
       <Breadcrumbs title="Products" />
       <section className="products section-center">
-        <span>Filter Component</span>
+        <Filters />
         <div>
-          <Sort/>
+          <Sort />
           <ProductsList />
         </div>
       </section>
