@@ -99,7 +99,7 @@
 }
 
 @media (min-width: 768px) {
-    .content {
+    .filters-wrapper .content {
         position: sticky;
         top: calc(var(--nav-height) + 1rem);
     }
