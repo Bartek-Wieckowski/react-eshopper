@@ -4,6 +4,8 @@ import { useProducts } from "../contexts/ProductsContext";
 import { formatPrice } from "../utils/helpers";
 import Loading from "../components/Loading/Loading";
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
+import ProductImages from "../components/ProductImages/ProductImages";
+
 
 export default function SingleProduct() {
   const { id } = useParams();
@@ -43,7 +45,7 @@ export default function SingleProduct() {
           back to products
         </Link>
         <div className="product-center single-product-page">
-          <span>Product Images component</span>
+          <ProductImages images={images} />
           <section className="content">
             <h2>{name}</h2>
             <span>Stars Component</span>
