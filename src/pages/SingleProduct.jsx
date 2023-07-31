@@ -7,14 +7,33 @@ import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 
 export default function SingleProduct() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const { singleProductLoading, singleProductError, singleProduct, fetchSingleProduct } = useProducts();
   const { name, price, description, stock, stars, reviews, id: sku, company, images } = singleProduct;
 
   useEffect(function () {
     fetchSingleProduct(`https://course-api.com/react-store-single-product?id=${id}`);
   }, []);
+  useEffect(
+    function () {
+      if (singleProductError) {
+        setTimeout(() => {
+          navigate("/");
+        }, 3000);
+      }
+    },
+    [singleProductError]
+  );
+
   if (singleProductLoading) {
     return <Loading />;
+  }
+  if (singleProductError) {
+    return (
+      <div className="section section-center text-center">
+        <h2>there was an error...</h2>
+      </div>
+    );
   }
   return (
     <main>
