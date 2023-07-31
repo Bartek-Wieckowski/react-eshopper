@@ -45,6 +45,7 @@ export default function MainSlider() {
           return (
             <div key={itemImg.id} className={`slide ${position}`}>
               <img src={itemImg.src} />
+              <p className="slider-txt">{itemImg.text}</p>
             </div>
           );
         })}
