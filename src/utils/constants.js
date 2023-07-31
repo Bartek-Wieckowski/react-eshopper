@@ -19,22 +19,22 @@ export const links = [
 export const mainSlider = [
   {
     id: 1,
-    text: "slider 1",
+    text: "New shoes",
     src: "../assets/slider/slider0.jpg",
   },
   {
     id: 2,
-    text: "slider 2",
+    text: "Awesome design",
     src: "../assets/slider/slider1.jpg",
   },
   {
     id: 3,
-    text: "slider 3",
+    text: "Modern look",
     src: "../assets/slider/slider2.jpg",
   },
   {
     id: 4,
-    text: "slider 4",
+    text: "Best clothes",
     src: "../assets/slider/slider3.jpg",
   },
 ];
