@@ -5,6 +5,9 @@ const initialState = {
   productsError: false,
   products: [],
   featuredProducts: [],
+  singleProductLoading: false,
+  singleProductError: false,
+  singleProduct: {},
 };
 
 const ProductsContext = createContext();
@@ -18,6 +21,12 @@ function reducer(state, action) {
       return { ...state, productsLoading: false, products: action.payload, featuredProducts };
     case "getProductsError":
       return { ...state, productsLoading: false, productsError: true };
+    case "getSingleProductBegin":
+      return { ...state, singleProductLoading: true, singleProductError: false };
+    case "getSingleProductSuccess":
+      return { ...state, singleProductLoading: false, singleProduct: action.payload };
+    case "getSingleProductError":
+      return { ...state, singleProductLoading: false, singleProduct: true };
 
     default:
       throw new Error("Unknown action type");
