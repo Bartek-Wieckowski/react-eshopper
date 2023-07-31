@@ -26,7 +26,7 @@ function reducer(state, action) {
     case "getSingleProductSuccess":
       return { ...state, singleProductLoading: false, singleProduct: action.payload };
     case "getSingleProductError":
-      return { ...state, singleProductLoading: false, singleProduct: true };
+      return { ...state, singleProductLoading: false, singleProductError: true };
 
     default:
       throw new Error("Unknown action type");
@@ -69,6 +69,7 @@ function ProductsProvider({ children }) {
       dispatch({ type: "getSingleProductSuccess", payload: data });
     } catch (error) {
       dispatch({ type: "getSingleProductError" });
+      console.log(error.message);
     }
   }
 
