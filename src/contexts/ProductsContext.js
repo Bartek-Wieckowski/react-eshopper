@@ -34,10 +34,18 @@ function reducer(state, action) {
 }
 
 function ProductsProvider({ children }) {
-  const [{ productsLoading, productsError, products, featuredProducts }, dispatch] = useReducer(
-    reducer,
-    initialState
-  );
+  const [
+    {
+      productsLoading,
+      productsError,
+      products,
+      featuredProducts,
+      singleProductLoading,
+      singleProductError,
+      singleProduct,
+    },
+    dispatch,
+  ] = useReducer(reducer, initialState);
 
   useEffect(function () {
     async function fetchProducts() {
@@ -46,7 +54,6 @@ function ProductsProvider({ children }) {
         const res = await fetch(`https://course-api.com/react-store-products`);
         const data = await res.json();
         dispatch({ type: "getProductsSuccess", payload: data });
-        // console.log(data);
       } catch (error) {
         dispatch({ type: "getProductsError" });
       }
@@ -54,8 +61,30 @@ function ProductsProvider({ children }) {
     fetchProducts();
   }, []);
 
+  async function fetchSingleProduct(url) {
+    dispatch({ type: "getSingleProductBegin" });
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      dispatch({ type: "getSingleProductSuccess", payload: data });
+    } catch (error) {
+      dispatch({ type: "getSingleProductError" });
+    }
+  }
+
   return (
-    <ProductsContext.Provider value={{ productsLoading, productsError, products, featuredProducts }}>
+    <ProductsContext.Provider
+      value={{
+        productsLoading,
+        productsError,
+        products,
+        featuredProducts,
+        singleProductLoading,
+        singleProductError,
+        singleProduct,
+        fetchSingleProduct,
+      }}
+    >
       {children}
     </ProductsContext.Provider>
   );
