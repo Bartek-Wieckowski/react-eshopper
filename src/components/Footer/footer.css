@@ -1,4 +1,4 @@
-footer{
+.footer-section{
     height: 5rem;
     display: flex;
     flex-direction: column;
@@ -7,7 +7,7 @@ footer{
     background: var(--clr-black);
     text-align: center;
 }
-footer  h5 {
+.footer-section  h5 {
     color: var(--clr-white);
     margin: 0.1rem;
 
