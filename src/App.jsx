@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { MenuContextProvider } from "./contexts/MenuContext";
 import Navbar from "./components/Navbar/Navbar";
 import Sidebar from "./components/Sidebar/Sidebar";
+import Footer from "./components/Footer/Footer";
 import Homepage from "./pages/Homepage";
 import About from "./pages/About";
 import Products from "./pages/Products";
@@ -23,6 +24,7 @@ function App() {
         <Route path="/products/:id" element={<SingleProduct />}></Route>
         <Route path="*" element={<PageNotFound />}></Route>
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
