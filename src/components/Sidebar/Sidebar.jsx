@@ -21,7 +21,9 @@ export default function Sidebar() {
           {links.map(({ id, text, url }) => {
             return (
               <li key={id}>
-                <Link to={url}>{text}</Link>
+                <Link to={url} onClick={closeMenu}>
+                  {text}
+                </Link>
               </li>
             );
           })}
