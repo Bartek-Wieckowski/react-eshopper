@@ -1,0 +1,14 @@
+.stars-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.stars-wrapper span {
+    margin-right: 0.25rem;
+}
+
+.stars-wrapper p {
+    margin-left: 0.5rem;
+    margin-bottom: 0;
+}
