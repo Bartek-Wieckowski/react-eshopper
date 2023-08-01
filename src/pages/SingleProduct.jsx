@@ -5,7 +5,7 @@ import { formatPrice } from "../utils/helpers";
 import Loading from "../components/Loading/Loading";
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 import ProductImages from "../components/ProductImages/ProductImages";
-
+import Stars from "../components/Stars/Stars";
 
 export default function SingleProduct() {
   const { id } = useParams();
@@ -48,7 +48,7 @@ export default function SingleProduct() {
           <ProductImages images={images} />
           <section className="content">
             <h2>{name}</h2>
-            <span>Stars Component</span>
+            <Stars stars={stars} reviews={reviews} />
             <h5 className="price">{formatPrice(price)}</h5>
             <p className="desc">{description}</p>
             <p className="info">
