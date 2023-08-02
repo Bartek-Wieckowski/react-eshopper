@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useReducer } from "react";
 
 function getLocalStorage() {
   let cart = localStorage.getItem("cart");
@@ -18,8 +18,50 @@ const initialState = {
 
 const CartContext = createContext();
 
+function reducer(state, action) {
+  switch (action.type) {
+    case "addToCart":
+      const { id, color, amount, product } = action.payload;
+      const tempItem = state.cart.find((cartItem) => cartItem.id === id + color);
+      if (tempItem) {
+        const tempCart = state.cart.map((cartItem) => {
+          if (cartItem.id === id + color) {
+            let newAmount = cartItem.amount + amount;
+            if (newAmount > cartItem.max) {
+              newAmount = cartItem.max;
+            }
+            return { ...cartItem, amount: newAmount };
+          } else {
+            return cartItem;
+          }
+        });
+        return { ...state, cart: tempCart };
+      } else {
+        const newItem = {
+          id: id + color,
+          name: product.name,
+          color,
+          amount,
+          image: product.images[0].url,
+          price: product.price,
+          max: product.stock,
+        };
+        return { ...state, cart: [...state.cart, newItem] };
+      }
+
+    default:
+      throw new Error("Unknown action type");
+  }
+}
+
 function CartProvider({ children }) {
-  return <CartProvider.Provider>{children}</CartProvider.Provider>;
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  function addToCart(id, color, amount, product) {
+    dispatch({ type: "addToCart", payload: { id, color, amount, product } });
+  }
+
+  return <CartProvider.Provider value={{ ...state, addToCart }}>{children}</CartProvider.Provider>;
 }
 
 function useCart() {
