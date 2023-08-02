@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "./add-to-cart.css";
+import AmountBtns from "../AmountBtns/AmountBtns";
+import { Link } from "react-router-dom";
 
 export default function AddToCart({ product }) {
   const { id, stock, colors } = product;
@@ -30,6 +32,12 @@ export default function AddToCart({ product }) {
             </button>
           ))}
         </div>
+      </div>
+      <div className="btn-container">
+        <AmountBtns />
+        <Link to="/cart" className="btn">
+          add to cart
+        </Link>
       </div>
     </div>
   );
