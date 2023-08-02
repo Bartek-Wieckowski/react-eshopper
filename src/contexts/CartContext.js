@@ -48,7 +48,17 @@ function reducer(state, action) {
         };
         return { ...state, cart: [...state.cart, newItem] };
       }
-
+    case "countCartTotals":
+      const { totalItems, totalAmount } = state.cart.reduce(
+        (total, cartItem) => {
+          const { amount, price } = cartItem;
+          total.totalItems += amount;
+          total.totalAmount += price * amount;
+          return total;
+        },
+        { totalAmount: 0, totalItems: 0 }
+      );
+      return { ...state, totalAmount, totalItems };
     default:
       throw new Error("Unknown action type");
   }
@@ -63,6 +73,7 @@ function CartProvider({ children }) {
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(state.cart));
+    dispatch({ type: "countCartTotals" });
   }, [state.cart]);
 
   return <CartContext.Provider value={{ ...state, addToCartFunc }}>{children}</CartContext.Provider>;
