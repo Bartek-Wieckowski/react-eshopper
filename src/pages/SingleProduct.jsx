@@ -6,6 +6,7 @@ import Loading from "../components/Loading/Loading";
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 import ProductImages from "../components/ProductImages/ProductImages";
 import Stars from "../components/Stars/Stars";
+import AddToCart from "../components/AddToCart/AddToCart";
 
 export default function SingleProduct() {
   const { id } = useParams();
@@ -64,7 +65,7 @@ export default function SingleProduct() {
               {company}
             </p>
             <hr />
-            {stock > 0 && <span>AddToCart component</span>}
+            {stock > 0 && <AddToCart product={singleProduct} />}
           </section>
         </div>
       </section>
