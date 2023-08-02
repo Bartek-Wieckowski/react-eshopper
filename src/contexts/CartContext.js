@@ -1,9 +1,9 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 
 function getLocalStorage() {
   let cart = localStorage.getItem("cart");
   if (cart) {
-    return JSON.parse(localStorage.getItem("cart"));
+    return JSON.parse(cart);
   } else {
     return [];
   }
@@ -60,6 +60,10 @@ function CartProvider({ children }) {
   function addToCartFunc(id, color, amount, product) {
     dispatch({ type: "addToCart", payload: { id, color, amount, product } });
   }
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(state.cart));
+  }, [state.cart]);
 
   return <CartContext.Provider value={{ ...state, addToCartFunc }}>{children}</CartContext.Provider>;
 }
