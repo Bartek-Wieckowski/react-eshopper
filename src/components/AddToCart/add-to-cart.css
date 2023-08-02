@@ -32,6 +32,6 @@
     align-items: center;
     justify-content: center;
 }
-.addtocart-wrapper .color-btn .active {
+.addtocart-wrapper .color-btn.active {
     opacity: 1;
 }
