@@ -32,6 +32,16 @@
     align-items: center;
     justify-content: center;
 }
+
 .addtocart-wrapper .color-btn.active {
     opacity: 1;
+}
+
+.addtocart-wrapper .btn-container {
+    margin-top: 2rem;
+}
+
+.addtocart-wrapper .btn {
+    margin-top: 1rem;
+    width: 140px;
 }
