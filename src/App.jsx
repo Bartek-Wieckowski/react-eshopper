@@ -8,6 +8,8 @@ import About from "./pages/About";
 import Products from "./pages/Products";
 import PageNotFound from "./pages/PageNotFound";
 import SingleProduct from "./pages/SingleProduct";
+import Cart from "./pages/Cart";
+
 
 function App() {
   return (
@@ -22,6 +24,7 @@ function App() {
         <Route path="/about" element={<About />}></Route>
         <Route path="/products" element={<Products />}></Route>
         <Route path="/products/:id" element={<SingleProduct />}></Route>
+        <Route path="/cart" element={<Cart />}></Route>
         <Route path="*" element={<PageNotFound />}></Route>
       </Routes>
       <Footer />
