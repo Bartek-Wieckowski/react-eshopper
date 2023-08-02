@@ -6,6 +6,14 @@ import { Link } from "react-router-dom";
 export default function AddToCart({ product }) {
   const { id, stock, colors } = product;
   const [mainColor, setMainColor] = useState(colors[0]);
+  const [amount, setAmount] = useState(0);
+
+  function increase() {
+    setAmount((oldAmount) => Math.min(oldAmount + 1, stock));
+  }
+  function decrease() {
+    setAmount((oldAmount) => Math.max(oldAmount - 1, 0));
+  }
   return (
     <div className="addtocart-wrapper">
       <div className="colors">
@@ -34,7 +42,7 @@ export default function AddToCart({ product }) {
         </div>
       </div>
       <div className="btn-container">
-        <AmountBtns />
+        <AmountBtns inc={increase} dec={decrease} amount={amount} />
         <Link to="/cart" className="btn">
           add to cart
         </Link>
