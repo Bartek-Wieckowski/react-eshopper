@@ -1,12 +1,15 @@
 import { Link } from "react-router-dom";
 import "./cart-buttons.css";
 import { useCart } from "../../contexts/CartContext";
+import { useMenuContext } from "../../contexts/MenuContext";
+
 
 export default function CartButtons() {
   const { totalItems } = useCart();
+  const {closeMenu} = useMenuContext();
   return (
     <div className="cart-btn-wrapper">
-      <Link className="cart-btn">
+      <Link className="cart-btn" to="/cart" onClick={closeMenu}>
         Cart
         <span className="cart-container">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#fff" viewBox="0 0 256 256">
