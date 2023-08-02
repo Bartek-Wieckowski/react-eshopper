@@ -1,12 +1,14 @@
-import { useState } from "react";
 import "./add-to-cart.css";
-import AmountBtns from "../AmountBtns/AmountBtns";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import AmountBtns from "../AmountBtns/AmountBtns";
+import { useCart } from "../../contexts/CartContext";
 
 export default function AddToCart({ product }) {
+  const { addToCartFunc } = useCart();
   const { id, stock, colors } = product;
   const [mainColor, setMainColor] = useState(colors[0]);
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState(1);
 
   function increase() {
     setAmount((oldAmount) => Math.min(oldAmount + 1, stock));
@@ -43,7 +45,7 @@ export default function AddToCart({ product }) {
       </div>
       <div className="btn-container">
         <AmountBtns inc={increase} dec={decrease} amount={amount} />
-        <Link to="/cart" className="btn">
+        <Link to="/cart" className="btn" onClick={() => addToCartFunc(id, mainColor, amount, product)}>
           add to cart
         </Link>
       </div>
