@@ -1,9 +1,9 @@
 import { createContext, useContext, useReducer } from "react";
 
 function getLocalStorage() {
-  const cart = localStorage.getItem("cart");
+  let cart = localStorage.getItem("cart");
   if (cart) {
-    return JSON.parse(cart);
+    return JSON.parse(localStorage.getItem("cart"));
   } else {
     return [];
   }
@@ -57,11 +57,11 @@ function reducer(state, action) {
 function CartProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  function addToCart(id, color, amount, product) {
+  function addToCartFunc(id, color, amount, product) {
     dispatch({ type: "addToCart", payload: { id, color, amount, product } });
   }
 
-  return <CartContext.Provider value={{ ...state, addToCart }}>{children}</CartContext.Provider>;
+  return <CartContext.Provider value={{ ...state, addToCartFunc }}>{children}</CartContext.Provider>;
 }
 
 function useCart() {
