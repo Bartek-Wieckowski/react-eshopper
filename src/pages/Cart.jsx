@@ -1,7 +1,8 @@
-import React from "react";
-import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
-import { useCart } from "../contexts/CartContext";
-import { Link } from "react-router-dom";
+import React from 'react';
+import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
+import { useCart } from '../contexts/CartContext';
+import { Link } from 'react-router-dom';
+import CartContent from '../components/CartContent/CartContent';
 
 export default function Cart() {
   const { cart } = useCart();
@@ -23,6 +24,7 @@ export default function Cart() {
   return (
     <main>
       <Breadcrumbs title="cart" />
+      <CartContent />
     </main>
   );
 }
