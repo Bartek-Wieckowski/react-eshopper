@@ -92,7 +92,7 @@
   .cart-item-wrapper .subtotal {
     display: block;
     margin-bottom: 0;
-    color: var(--clr-additional);
+    color: var(--clr-white);
     font-weight: 400;
     font-size: 1rem;
   }
