@@ -1,6 +1,7 @@
 import { useCart } from '../../contexts/CartContext';
 import CartItem from '../CartItem/CartItem';
 import './cart-content.css';
+import { Link } from 'react-router-dom';
 
 export default function CartContent() {
   const { cart } = useCart();
@@ -19,6 +20,16 @@ export default function CartContent() {
       {cart.map((item) => {
         return <CartItem key={item.id} {...item} />;
       })}
+      <hr />
+      <div className="link-container-cart">
+        <Link to="/products" className="link-btn">
+          Continue shopping
+        </Link>
+        <button type="button" className="link-btn clear-btn">
+          Clear shopping cart
+        </button>
+      </div>
+      <span>Cart Total component</span>
     </div>
   );
 }
