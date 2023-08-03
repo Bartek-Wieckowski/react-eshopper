@@ -1,5 +1,9 @@
+import { useCart } from '../../contexts/CartContext';
+import CartItem from '../CartItem/CartItem';
 import './cart-content.css';
+
 export default function CartContent() {
+  const { cart } = useCart();
   return (
     <div className="section section-center">
       <div className="cart-columns">
@@ -12,6 +16,9 @@ export default function CartContent() {
         </div>
         <hr />
       </div>
+      {cart.map((item) => {
+        return <CartItem key={item.id} {...item} />;
+      })}
     </div>
   );
 }
