@@ -1,8 +1,10 @@
 import { formatPrice } from '../../utils/helpers';
 import './cart-item.css';
 import AmountBtns from '../AmountBtns/AmountBtns';
+import { useCart } from '../../contexts/CartContext';
 
 export default function CartItem({ id, image, name, color, price, amount }) {
+  const { removeCartItemFunc } = useCart();
   return (
     <div className="cart-item-wrapper">
       <div className="title">
@@ -18,7 +20,7 @@ export default function CartItem({ id, image, name, color, price, amount }) {
       <h5 className="price">{formatPrice(price)}</h5>
       <AmountBtns amount={amount} />
       <h5 className="subtotal">{formatPrice(price * amount)}</h5>
-      <button className="remove-btn">
+      <button className="remove-btn" onClick={() => removeCartItemFunc(id)}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="32"
