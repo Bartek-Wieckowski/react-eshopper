@@ -53,6 +53,8 @@ function reducer(state, action) {
     case 'removeCartItem':
       const tempCart = state.cart.filter((item) => item.id !== action.payload);
       return { ...state, cart: tempCart };
+    case 'clearCart':
+      return { ...state, cart: [] };
     case 'countCartTotals':
       const { totalItems, totalAmount } = state.cart.reduce(
         (total, cartItem) => {
@@ -78,6 +80,9 @@ function CartProvider({ children }) {
   function removeCartItemFunc(id) {
     dispatch({ type: 'removeCartItem', payload: id });
   }
+  function clearCartFunc() {
+    dispatch({ type: 'clearCart' });
+  }
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(state.cart));
@@ -86,7 +91,7 @@ function CartProvider({ children }) {
 
   return (
     <CartContext.Provider
-      value={{ ...state, addToCartFunc, removeCartItemFunc }}
+      value={{ ...state, addToCartFunc, removeCartItemFunc, clearCartFunc }}
     >
       {children}
     </CartContext.Provider>
