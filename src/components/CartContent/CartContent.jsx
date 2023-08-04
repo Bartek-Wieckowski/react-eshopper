@@ -4,7 +4,7 @@ import './cart-content.css';
 import { Link } from 'react-router-dom';
 
 export default function CartContent() {
-  const { cart } = useCart();
+  const { cart, clearCartFunc } = useCart();
   return (
     <div className="section section-center">
       <div className="cart-columns">
@@ -25,7 +25,11 @@ export default function CartContent() {
         <Link to="/products" className="link-btn">
           Continue shopping
         </Link>
-        <button type="button" className="link-btn clear-btn">
+        <button
+          type="button"
+          className="link-btn clear-btn"
+          onClick={() => clearCartFunc()}
+        >
           Clear shopping cart
         </button>
       </div>
