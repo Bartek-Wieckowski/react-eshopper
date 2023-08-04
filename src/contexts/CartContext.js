@@ -51,7 +51,7 @@ function reducer(state, action) {
         return { ...state, cart: [...state.cart, newItem] };
       }
     case 'removeCartItem':
-      const tempCart = state.cart.filter((item) => item.id === action.payload);
+      const tempCart = state.cart.filter((item) => item.id !== action.payload);
       return { ...state, cart: tempCart };
     case 'countCartTotals':
       const { totalItems, totalAmount } = state.cart.reduce(
