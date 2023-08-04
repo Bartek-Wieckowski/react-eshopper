@@ -75,19 +75,20 @@ function reducer(state, action) {
             if (newAmount > item.max) {
               newAmount = item.max;
             }
-            return { ...state, amount: newAmount };
+            return { ...item, amount: newAmount };
           }
           if (value === 'dec') {
             let newAmount = item.amount - 1;
             if (newAmount < 1) {
               newAmount = 1;
             }
-            return { ...state, amount: newAmount };
+            return { ...item, amount: newAmount };
           }
         }
         return item;
       });
       return { ...state, cart: tempCart2 };
+
     default:
       throw new Error('Unknown action type');
   }
@@ -106,7 +107,10 @@ function CartProvider({ children }) {
     dispatch({ type: 'clearCart' });
   }
   function toggleAmountFunc(id, value) {
-    dispatch({ type: 'toggleCartItemAmount', payload: { id, value } });
+    dispatch({
+      type: 'toggleCartItemAmount',
+      payload: { idCartItem: id, value },
+    });
   }
 
   useEffect(() => {
