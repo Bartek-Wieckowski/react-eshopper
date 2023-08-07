@@ -1,5 +1,6 @@
 import { useCart } from '../../contexts/CartContext';
 import CartItem from '../CartItem/CartItem';
+import CartTotal from '../CartTotal/CartTotal';
 import './cart-content.css';
 import { Link } from 'react-router-dom';
 
@@ -33,7 +34,7 @@ export default function CartContent() {
           Clear shopping cart
         </button>
       </div>
-      <span>Cart Total component</span>
+      <CartTotal />
     </div>
   );
 }
