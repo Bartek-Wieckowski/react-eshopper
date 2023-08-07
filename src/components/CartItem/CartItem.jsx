@@ -19,7 +19,7 @@ export default function CartItem({ id, image, name, color, price, amount }) {
         <div>
           <h5 className="name">{name}</h5>
           <p className="color">
-            color :<span style={{ backgroundColor: { color } }}></span>
+            color :<span style={{ backgroundColor: color }}></span>
           </p>
           <h5 className="price-small">{formatPrice(price)}</h5>
         </div>
