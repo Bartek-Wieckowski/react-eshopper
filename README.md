@@ -6,12 +6,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Is used in the project
 
--Context API
--useReducer, useEffect, useState
--react-router-dom
--grid/list view
--many options of filter products
--own slider
+- Context API
+- useReducer, useEffect, useState
+- react-router-dom
+- grid/list view
+- many options of filter products
+- own slider
 
 ## Available Scripts
 
